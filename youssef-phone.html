@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Youssef Phone | بيع وشراء الهواتف</title>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&family=Bebas+Neue&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#080810;
+  --surface:#0f0f1a;
+  --card:#151525;
+  --border:rgba(255,255,255,0.07);
+  --gold:#f5c400;
+  --white:#f0f0f0;
+  --muted:#6b7280;
+  --green:#22c55e;
+}
+html{scroll-behavior:smooth}
+body{font-family:'Cairo',sans-serif;background:var(--bg);color:var(--white);overflow-x:hidden}
+
+/* NAV */
+nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:0 48px;height:68px;background:rgba(8,8,16,.9);backdrop-filter:blur(24px);border-bottom:1px solid var(--border)}
+.logo{display:flex;align-items:center;gap:12px;text-decoration:none}
+.logo-mark{width:38px;height:38px;background:var(--gold);border-radius:10px;display:grid;place-items:center}
+.logo-name{font-family:'Bebas Neue',sans-serif;font-size:24px;letter-spacing:2px;color:var(--white)}
+.logo-name span{color:var(--gold)}
+.nav-r{display:flex;align-items:center;gap:8px}
+.nav-link{color:var(--muted);text-decoration:none;font-size:14px;font-weight:600;padding:8px 14px;border-radius:8px;transition:.2s}
+.nav-link:hover{color:var(--white);background:rgba(255,255,255,.05)}
+.nav-wa{display:flex;align-items:center;gap:8px;background:var(--green);color:#000;font-weight:800;font-size:13px;padding:9px 20px;border-radius:30px;text-decoration:none;transition:.2s}
+.nav-wa:hover{transform:translateY(-1px);box-shadow:0 8px 24px rgba(34,197,94,.4)}
+
+/* HERO */
+.hero{position:relative;min-height:88vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:80px 24px 60px;overflow:hidden}
+.hero-glow{position:absolute;top:-10%;left:50%;transform:translateX(-50%);width:900px;height:700px;background:radial-gradient(ellipse at center,rgba(245,196,0,.1) 0%,transparent 65%);pointer-events:none}
+.hero-pill{display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(245,196,0,.3);background:rgba(245,196,0,.07);padding:7px 18px;border-radius:30px;font-size:12px;font-weight:700;color:var(--gold);letter-spacing:1px;text-transform:uppercase;margin-bottom:28px}
+.hero-pill span{width:6px;height:6px;background:var(--gold);border-radius:50%;animation:pulse 2s infinite}
+h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(64px,11vw,148px);line-height:.92;letter-spacing:2px;margin-bottom:20px}
+h1 em{font-style:normal;-webkit-text-stroke:2px var(--gold);color:transparent}
+.hero-sub{font-size:17px;color:var(--muted);max-width:500px;line-height:1.8;margin:0 auto 44px}
+.hero-ctas{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+.btn-wa{display:inline-flex;align-items:center;gap:10px;background:var(--green);color:#000;font-weight:800;font-size:16px;padding:16px 34px;border-radius:50px;text-decoration:none;transition:.3s;box-shadow:0 0 40px rgba(34,197,94,.2)}
+.btn-wa:hover{transform:translateY(-3px);box-shadow:0 12px 40px rgba(34,197,94,.45)}
+.btn-outline{display:inline-flex;align-items:center;gap:10px;border:1px solid rgba(245,196,0,.4);color:var(--gold);font-weight:700;font-size:15px;padding:16px 34px;border-radius:50px;text-decoration:none;transition:.3s;background:rgba(245,196,0,.04)}
+.btn-outline:hover{background:rgba(245,196,0,.1);transform:translateY(-3px)}
+
+/* TICKER */
+.ticker-wrap{overflow:hidden;border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:14px 0;background:var(--surface)}
+.ticker{display:flex;gap:60px;white-space:nowrap;animation:ticker 20s linear infinite;width:max-content}
+.ticker-item{display:inline-flex;align-items:center;gap:10px;font-size:12px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:2px}
+.ticker-dot{width:5px;height:5px;background:var(--gold);border-radius:50%;flex-shrink:0}
+
+/* STATS */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border)}
+.stat{background:var(--surface);padding:40px 20px;text-align:center}
+.stat-n{font-family:'Bebas Neue',sans-serif;font-size:56px;color:var(--gold);line-height:1}
+.stat-l{font-size:12px;color:var(--muted);font-weight:700;margin-top:6px;text-transform:uppercase;letter-spacing:1px}
+
+/* SECTIONS */
+.section{max-width:1200px;margin:0 auto;padding:80px 24px}
+.section-tag{font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:12px}
+.section-h{font-family:'Bebas Neue',sans-serif;font-size:clamp(36px,5vw,64px);letter-spacing:1px;line-height:1.05;margin-bottom:8px}
+.section-h em{font-style:normal;color:var(--gold)}
+.section-p{color:var(--muted);font-size:15px;line-height:1.8;max-width:520px}
+
+/* BRANDS */
+.brands-bg{background:var(--surface);padding:70px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.brands-inner{max-width:1200px;margin:0 auto;padding:0 24px}
+.brands-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:2px;margin-top:48px;background:var(--border);border-radius:20px;overflow:hidden}
+.bc{background:var(--card);padding:26px 14px;display:flex;flex-direction:column;align-items:center;gap:10px;cursor:pointer;transition:.25s;position:relative;overflow:hidden}
+.bc::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:var(--gold);transform:scaleX(0);transition:.25s}
+.bc:hover::after,.bc.on::after{transform:scaleX(1)}
+.bc:hover,.bc.on{background:#1c1c30}
+.bc.on{outline:1px solid rgba(245,196,0,.4)}
+.bl{width:60px;height:30px;display:flex;align-items:center;justify-content:center}
+.bl img{max-width:100%;max-height:100%;object-fit:contain;filter:brightness(0) invert(1);opacity:.5;transition:.25s}
+.bc:hover .bl img,.bc.on .bl img{opacity:1}
+.bn{font-size:11px;font-weight:700;color:var(--muted);transition:.2s;letter-spacing:.5px}
+.bc:hover .bn,.bc.on .bn{color:var(--white)}
+.bv{font-size:10px;background:rgba(34,197,94,.1);color:var(--green);padding:2px 8px;border-radius:20px;font-weight:700}
+
+/* ORDER */
+.order-wrap{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start}
+.why-cards{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:36px}
+.wc{background:var(--surface);border:1px solid var(--border);border-radius:18px;padding:26px 22px;transition:.3s}
+.wc:hover{border-color:rgba(245,196,0,.2);transform:translateY(-3px)}
+.wc-icon{font-size:26px;margin-bottom:12px}
+.wc h3{font-size:15px;font-weight:800;margin-bottom:6px}
+.wc p{font-size:13px;color:var(--muted);line-height:1.6}
+.info-links{display:flex;flex-direction:column;gap:12px;margin-top:28px}
+.il{display:flex;align-items:center;gap:14px;padding:16px 18px;background:var(--surface);border:1px solid var(--border);border-radius:14px;text-decoration:none;color:inherit;transition:.3s}
+.il:hover{border-color:rgba(245,196,0,.25);transform:translateX(-4px)}
+.il-icon{width:40px;height:40px;border-radius:10px;display:grid;place-items:center;font-size:18px;flex-shrink:0}
+.il strong{display:block;font-size:13px;font-weight:700}
+.il span{font-size:12px;color:var(--muted)}
+
+/* FORM */
+.form-box{background:var(--surface);border:1px solid var(--border);border-radius:24px;padding:36px;position:sticky;top:88px}
+.form-h{font-family:'Bebas Neue',sans-serif;font-size:34px;letter-spacing:1px;margin-bottom:4px}
+.form-p{font-size:13px;color:var(--muted);margin-bottom:26px}
+.brand-tag{background:rgba(245,196,0,.08);border:1px solid rgba(245,196,0,.2);border-radius:10px;padding:10px 14px;font-size:13px;font-weight:700;color:var(--gold);margin-bottom:18px;display:none;align-items:center;gap:8px}
+.brand-tag.show{display:flex}
+.fg{margin-bottom:16px}
+.fg label{display:block;font-size:11px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:7px}
+.fg input,.fg select,.fg textarea{width:100%;background:var(--card);border:1px solid var(--border);border-radius:12px;padding:12px 15px;color:var(--white);font-family:'Cairo',sans-serif;font-size:14px;outline:none;transition:.2s;direction:rtl}
+.fg input::placeholder,.fg textarea::placeholder{color:rgba(255,255,255,.2)}
+.fg input:focus,.fg select:focus,.fg textarea:focus{border-color:var(--gold);box-shadow:0 0 0 3px rgba(245,196,0,.08)}
+.fg select option{background:var(--card)}
+.fg-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.btn-send{width:100%;padding:15px;background:var(--green);border:none;border-radius:12px;color:#000;font-family:'Cairo',sans-serif;font-size:16px;font-weight:900;cursor:pointer;transition:.3s;display:flex;align-items:center;justify-content:center;gap:10px;margin-top:4px}
+.btn-send:hover{transform:translateY(-2px);box-shadow:0 10px 30px rgba(34,197,94,.4)}
+
+/* CONTACT */
+.contact-bg{background:var(--surface);padding:80px 0;border-top:1px solid var(--border)}
+.contact-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:48px}
+.cc{display:flex;align-items:center;gap:16px;padding:24px;background:var(--card);border:1px solid var(--border);border-radius:18px;text-decoration:none;transition:.3s}
+.cc:hover{border-color:rgba(245,196,0,.3);transform:translateY(-4px);box-shadow:0 16px 40px rgba(0,0,0,.3)}
+.cc-icon{width:50px;height:50px;border-radius:14px;display:grid;place-items:center;font-size:22px;flex-shrink:0}
+.cc-type{font-size:11px;color:var(--muted);font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:4px}
+.cc-val{font-size:14px;font-weight:700;color:var(--white)}
+
+/* FOOTER */
+footer{padding:40px 24px;text-align:center;border-top:1px solid var(--border)}
+.fl{font-family:'Bebas Neue',sans-serif;font-size:28px;letter-spacing:2px;margin-bottom:10px}
+.fl span{color:var(--gold)}
+footer p{font-size:13px;color:var(--muted)}
+
+/* ANIMATIONS */
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.7)}}
+@keyframes ticker{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+@keyframes up{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.hero>*{animation:up .7s ease both}
+.hero-pill{animation-delay:.1s}h1{animation-delay:.2s}.hero-sub{animation-delay:.3s}.hero-ctas{animation-delay:.4s}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  nav{padding:0 16px}.nav-link{display:none}
+  .stats{grid-template-columns:1fr 1fr}
+  .brands-grid{grid-template-columns:repeat(4,1fr)}
+  .order-wrap{grid-template-columns:1fr;gap:40px}
+  .form-box{position:static}
+  .contact-grid{grid-template-columns:1fr}
+}
+@media(max-width:600px){
+  .brands-grid{grid-template-columns:repeat(3,1fr)}
+  .why-cards{grid-template-columns:1fr}
+  .fg-row{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="logo" href="#">
+    <div class="logo-mark">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="black"><rect x="5" y="1" width="14" height="22" rx="3"/><circle cx="12" cy="19" r="1.2" fill="white"/></svg>
+    </div>
+    <span class="logo-name">YOUSSEF <span>PHONE</span></span>
+  </a>
+  <div class="nav-r">
+    <a href="#brands" class="nav-link">الماركات</a>
+    <a href="#order" class="nav-link">اطلب</a>
+    <a href="#contact" class="nav-link">تواصل</a>
+    <a href="https://wa.me/212780304003" class="nav-wa" target="_blank">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="black"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.105.548 4.082 1.508 5.802L0 24l6.35-1.463A11.944 11.944 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.804 9.804 0 01-5.007-1.369l-.359-.213-3.72.857.924-3.61-.234-.37A9.78 9.78 0 012.182 12C2.182 6.57 6.57 2.182 12 2.182S21.818 6.57 21.818 12 17.43 21.818 12 21.818z"/></svg>
+      واتساب
+    </a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-glow"></div>
+  <div class="hero-pill"><span></span>المغرب · بيع وشراء الهواتف</div>
+  <h1>YOUSSEF<br><em>PHONE</em></h1>
+  <p class="hero-sub">أفضل أسعار للهواتف الجديدة والمستعملة — جميع الماركات العالمية — تواصل معنا وستجد ما تبحث عنه</p>
+  <div class="hero-ctas">
+    <a href="https://wa.me/212780304003" class="btn-wa" target="_blank">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="black"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.105.548 4.082 1.508 5.802L0 24l6.35-1.463A11.944 11.944 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.804 9.804 0 01-5.007-1.369l-.359-.213-3.72.857.924-3.61-.234-.37A9.78 9.78 0 012.182 12C2.182 6.57 6.57 2.182 12 2.182S21.818 6.57 21.818 12 17.43 21.818 12 21.818z"/></svg>
+      تواصل الآن
+    </a>
+    <a href="#order" class="btn-outline">🛒 اطلب الآن</a>
+  </div>
+</section>
+
+<div class="ticker-wrap">
+  <div class="ticker" id="ticker"></div>
+</div>
+
+<div class="stats">
+  <div class="stat"><div class="stat-n">500+</div><div class="stat-l">عميل راضٍ</div></div>
+  <div class="stat"><div class="stat-n">20+</div><div class="stat-l">ماركة متوفرة</div></div>
+  <div class="stat"><div class="stat-n">100%</div><div class="stat-l">ضمان الجودة</div></div>
+  <div class="stat"><div class="stat-n">24/7</div><div class="stat-l">خدمة العملاء</div></div>
+</div>
+
+<!-- BRANDS -->
+<div class="brands-bg" id="brands">
+  <div class="brands-inner">
+    <div class="section-tag">الماركات المتوفرة</div>
+    <div class="section-h">اختر <em>ماركتك</em></div>
+    <p class="section-p">نوفر جميع الماركات العالمية الكبرى — جديدة ومستعملة — بأفضل الأسعار في السوق المغربية</p>
+    <div class="brands-grid" id="brandsGrid"></div>
+  </div>
+</div>
+
+<!-- ORDER -->
+<div class="section" id="order">
+  <div class="order-wrap">
+    <div>
+      <div class="section-tag">لماذا Youssef Phone</div>
+      <div class="section-h">الجودة <em>والأمانة</em><br>أولاً</div>
+      <div class="why-cards">
+        <div class="wc"><div class="wc-icon">✅</div><h3>ضمان الجودة</h3><p>كل هاتف يمر بفحص دقيق قبل البيع</p></div>
+        <div class="wc"><div class="wc-icon">💰</div><h3>أفضل سعر</h3><p>نضمن لك أفضل سعر مقارنة بالسوق</p></div>
+        <div class="wc"><div class="wc-icon">🚀</div><h3>تسليم سريع</h3><p>توصيل سريع لجميع مناطق المغرب</p></div>
+        <div class="wc"><div class="wc-icon">🤝</div><h3>نشتري هاتفك</h3><p>نشتري هاتفك بأعلى سعر نقدي فوري</p></div>
+      </div>
+      <div class="info-links">
+        <a href="https://wa.me/212780304003" class="il" target="_blank">
+          <div class="il-icon" style="background:rgba(34,197,94,.12)">💬</div>
+          <div><strong>واتساب</strong><span>+212 780 304 003</span></div>
+        </a>
+        <a href="mailto:youssef.phone@gmail.com" class="il">
+          <div class="il-icon" style="background:rgba(245,196,0,.1)">📧</div>
+          <div><strong>البريد الإلكتروني</strong><span>youssef.phone@gmail.com</span></div>
+        </a>
+        <a href="https://www.facebook.com/profile.php?id=61557532874405" class="il" target="_blank">
+          <div class="il-icon" style="background:rgba(24,119,242,.12)">📘</div>
+          <div><strong>صفحة فيسبوك</strong><span>Youssef Phone</span></div>
+        </a>
+      </div>
+    </div>
+
+    <div class="form-box">
+      <div class="form-h">اطلب الآن</div>
+      <p class="form-p">اختر الماركة من الأعلى ثم أرسل طلبك لواتساب مباشرة</p>
+      <div class="brand-tag" id="brandTag">📱 <span id="brandTagText"></span></div>
+      <div class="fg-row">
+        <div class="fg"><label>الاسم</label><input type="text" id="f-name" placeholder="اسمك الكامل"></div>
+        <div class="fg"><label>الهاتف</label><input type="tel" id="f-phone" placeholder="+212..."></div>
+      </div>
+      <div class="fg"><label>الماركة</label><input type="text" id="f-brand" placeholder="اختر من الأعلى أو اكتب..."></div>
+      <div class="fg"><label>الموديل</label><input type="text" id="f-model" placeholder="مثال: iPhone 15 Pro, Galaxy S24..."></div>
+      <div class="fg-row">
+        <div class="fg">
+          <label>نوع الطلب</label>
+          <select id="f-type">
+            <option value="">اختر...</option>
+            <option>شراء هاتف جديد</option>
+            <option>شراء هاتف مستعمل</option>
+            <option>بيع هاتفي</option>
+            <option>استفسار عن سعر</option>
+            <option>تبديل هاتف</option>
+          </select>
+        </div>
+        <div class="fg"><label>الميزانية (درهم)</label><input type="text" id="f-budget" placeholder="مثال: 2000-4000"></div>
+      </div>
+      <div class="fg"><label>ملاحظات (اختياري)</label><textarea id="f-notes" rows="3" placeholder="أي تفاصيل إضافية..."></textarea></div>
+      <button class="btn-send" onclick="sendWA()">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="black"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.105.548 4.082 1.508 5.802L0 24l6.35-1.463A11.944 11.944 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.804 9.804 0 01-5.007-1.369l-.359-.213-3.72.857.924-3.61-.234-.37A9.78 9.78 0 012.182 12C2.182 6.57 6.57 2.182 12 2.182S21.818 6.57 21.818 12 17.43 21.818 12 21.818z"/></svg>
+        إرسال الطلب عبر واتساب
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- CONTACT -->
+<div class="contact-bg" id="contact">
+  <div style="max-width:1200px;margin:0 auto;padding:0 24px">
+    <div class="section-tag">تواصل معنا</div>
+    <div class="section-h">نحن <em>دائماً هنا</em></div>
+    <div class="contact-grid">
+      <a href="https://wa.me/212780304003" class="cc" target="_blank">
+        <div class="cc-icon" style="background:rgba(34,197,94,.12)">💬</div>
+        <div><div class="cc-type">واتساب</div><div class="cc-val">+212 780 304 003</div></div>
+      </a>
+      <a href="mailto:youssef.phone@gmail.com" class="cc">
+        <div class="cc-icon" style="background:rgba(245,196,0,.1)">📧</div>
+        <div><div class="cc-type">البريد الإلكتروني</div><div class="cc-val">youssef.phone@gmail.com</div></div>
+      </a>
+      <a href="https://www.facebook.com/profile.php?id=61557532874405" class="cc" target="_blank">
+        <div class="cc-icon" style="background:rgba(24,119,242,.12)">📘</div>
+        <div><div class="cc-type">فيسبوك</div><div class="cc-val">Youssef Phone</div></div>
+      </a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="fl">YOUSSEF <span>PHONE</span></div>
+  <p>شريكك الموثوق لبيع وشراء الهواتف في المغرب</p>
+  <p style="margin-top:16px;font-size:12px;opacity:.25">© 2026 Youssef Phone — جميع الحقوق محفوظة</p>
+</footer>
+
+<script>
+// ── BRAND DATA ──
+const brands = [
+  { name:'Apple',    val:'Apple iPhone',
+    svg:`<svg viewBox="0 0 170 200" fill="white" xmlns="http://www.w3.org/2000/svg"><path d="M150 133c-1 1-20 11-20 35 0 27 24 37 25 37-1 1-4 13-13 26-8 11-16 23-29 23s-16-7-30-7c-14 0-19 7-31 7s-19-11-29-24C8 145 0 122 0 100c0-38 25-58 49-58 12 0 21 8 29 8s21-8 34-8zM131 2c7-8 11-19 11-30 0-1 0-2 0-3-11 0-23 7-30 16-6 7-12 18-12 29 0 1 0 2 0 3 1 0 2 0 3 0 10 0 21-6 28-15z"/></svg>` },
+  { name:'Samsung',  val:'Samsung',
+    svg:`<svg viewBox="0 0 300 60" fill="white" xmlns="http://www.w3.org/2000/svg"><text x="0" y="48" font-family="Arial,sans-serif" font-size="46" font-weight="700" letter-spacing="-1">SAMSUNG</text></svg>` },
+  { name:'Xiaomi',   val:'Xiaomi',
+    svg:`<svg viewBox="0 0 240 60" fill="white" xmlns="http://www.w3.org/2000/svg"><text x="0" y="48" font-family="Arial,sans-serif" font-size="44" font-weight="900">xiaomi</text></svg>` },
+  { name:'Huawei',   val:'Huawei',
+    svg:`<svg viewBox="0 0 80 80" fill="white" xmlns="http://www.w3.org/2000/svg"><path d="M40 5C40 5 24 17 24 33c0 10 7 17 16 17s16-7 16-17C56 17 40 5 40 5zm0 5c0 0 11 9 11 23c0 7-5 13-11 13s-11-6-11-13C29 19 40 10 40 10z"/><path d="M58 18c0 0-7 16-2 29c2 7 9 9 15 7s10-9 7-16C74 28 58 18 58 18zM55 59c0 0-7-16-2-29c2-7 9-9 15-7s10 9 7 16C71 49 55 59 55 59zM22 18c0 0 7 16 2 29c-2 7-9 9-15 7s-10-9-7-16C6 28 22 18 22 18zM25 59c0 0 7-16 2-29C25 23 18 21 12 23s-10 9-7 16C9 49 25 59 25 59z" opacity="0.6"/></svg>` },
+  { name:'Oppo',     val:'Oppo',
+    svg:`<svg viewBox="0 0 160 60" fill="white" xmlns="http://www.w3.org/2000/svg"><text x="0" y="46" font-family="Arial,sans-serif" font-size="42" font-weight="700" letter-spacing="3">OPPO</text></svg>` },
+  { name:'Vivo',     val:'Vivo',
+    svg:`<svg viewBox="0 0 120 60" fill="white" xmlns="http://www.w3.org/2000/svg"><text x="0" y="46" font-family="Arial,sans-serif" font-size="44" font-weight="700">vivo</text></svg>` },
+  { name:'Realme',   val:'Realme',
+    svg:`<svg viewBox="0 0 210 60" fill="white" xmlns="http://www.w3.org/2000/svg"><text x="0" y="46" font-family="Arial Black,sans-serif" font-size="38" font-weight="900">realme</text></svg>` },
+  { name:'OnePlus',  val:'OnePlus',
+    svg:`<svg viewBox="0 0 210 60" fill="white" xmlns="http://www.w3.org/2000/svg"><text x="0" y="44" font-family="Arial Black,sans-serif" font-size="34" font-weight="900">OnePlus</text></svg>` },
+  { name:'Google',   val:'Google Pixel',
+    svg:`<svg viewBox="0 0 220 60" fill="white" xmlns="http://www.w3.org/2000/svg"><text x="0" y="46" font-family="Arial,sans-serif" font-size="40" font-weight="700">Google</text></svg>` },
+  { name:'Nokia',    val:'Nokia',
+    svg:`<svg viewBox="0 0 180 60" fill="white" xmlns="http://www.w3.org/2000/svg"><text x="0" y="46" font-family="Arial Black,sans-serif" font-size="40" font-weight="900" letter-spacing="1">NOKIA</text></svg>` },
+  { name:'Sony',     val:'Sony Xperia',
+    svg:`<svg viewBox="0 0 140 60" fill="white" xmlns="http://www.w3.org/2000/svg"><text x="0" y="46" font-family="Arial,sans-serif" font-size="40" font-weight="700" letter-spacing="2">SONY</text></svg>` },
+  { name:'Motorola', val:'Motorola',
+    svg:`<svg viewBox="0 0 80 80" fill="white" xmlns="http://www.w3.org/2000/svg"><circle cx="40" cy="40" r="36" stroke="white" stroke-width="4" fill="none"/><path d="M20 20l10 17 10-17 10 17 10-17v30h-8V33l-12 17-12-17v17h-8z"/></svg>` },
+  { name:'Redmi',    val:'Redmi',
+    svg:`<svg viewBox="0 0 160 60" fill="white" xmlns="http://www.w3.org/2000/svg"><text x="0" y="46" font-family="Arial,sans-serif" font-size="40" font-weight="700">Redmi</text></svg>` },
+  { name:'Honor',    val:'Honor',
+    svg:`<svg viewBox="0 0 170 60" fill="white" xmlns="http://www.w3.org/2000/svg"><text x="0" y="46" font-family="Arial,sans-serif" font-size="38" font-weight="700" letter-spacing="1">HONOR</text></svg>` },
+  { name:'Poco',     val:'Poco',
+    svg:`<svg viewBox="0 0 130 60" fill="white" xmlns="http://www.w3.org/2000/svg"><text x="0" y="46" font-family="Arial Black,sans-serif" font-size="42" font-weight="900">POCO</text></svg>` },
+  { name:'Tecno',    val:'Tecno',
+    svg:`<svg viewBox="0 0 180 60" fill="white" xmlns="http://www.w3.org/2000/svg"><text x="0" y="46" font-family="Arial,sans-serif" font-size="36" font-weight="700" letter-spacing="2">TECNO</text></svg>` },
+  { name:'Infinix',  val:'Infinix',
+    svg:`<svg viewBox="0 0 190 60" fill="white" xmlns="http://www.w3.org/2000/svg"><text x="0" y="46" font-family="Arial,sans-serif" font-size="34" font-weight="700">Infinix</text></svg>` },
+  { name:'ZTE',      val:'ZTE',
+    svg:`<svg viewBox="0 0 110 60" fill="white" xmlns="http://www.w3.org/2000/svg"><text x="0" y="46" font-family="Arial Black,sans-serif" font-size="44" font-weight="900" letter-spacing="2">ZTE</text></svg>` },
+  { name:'Alcatel',  val:'Alcatel',
+    svg:`<svg viewBox="0 0 200 60" fill="white" xmlns="http://www.w3.org/2000/svg"><text x="0" y="46" font-family="Arial,sans-serif" font-size="36" font-weight="700" letter-spacing="1">alcatel</text></svg>` },
+  { name:'Itel',     val:'Itel',
+    svg:`<svg viewBox="0 0 100 60" fill="white" xmlns="http://www.w3.org/2000/svg"><text x="0" y="46" font-family="Arial,sans-serif" font-size="40" font-weight="700">itel</text></svg>` },
+];
+
+// BUILD BRANDS GRID
+const grid = document.getElementById('brandsGrid');
+brands.forEach((b,i) => {
+  const svgUrl = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(b.svg);
+  const div = document.createElement('div');
+  div.className = 'bc';
+  div.innerHTML = `<div class="bl"><img src="${svgUrl}" alt="${b.name}"></div><span class="bn">${b.name}</span><span class="bv">متوفر</span>`;
+  div.onclick = () => pickBrand(div, b.val);
+  grid.appendChild(div);
+});
+
+// BUILD TICKER
+const tickerEl = document.getElementById('ticker');
+const items = brands.map(b => `<span class="ticker-item"><span class="ticker-dot"></span>${b.name}</span>`).join('');
+tickerEl.innerHTML = items + items; // double for infinite
+
+// PICK BRAND
+function pickBrand(el, val) {
+  document.querySelectorAll('.bc').forEach(c => c.classList.remove('on'));
+  el.classList.add('on');
+  document.getElementById('f-brand').value = val;
+  const tag = document.getElementById('brandTag');
+  document.getElementById('brandTagText').textContent = val;
+  tag.classList.add('show');
+  setTimeout(() => document.getElementById('order').scrollIntoView({behavior:'smooth',block:'nearest'}), 150);
+}
+
+// SEND WHATSAPP
+function sendWA() {
+  const g = id => document.getElementById(id).value;
+  let m = `📱 *طلب جديد — Youssef Phone*\n\n`;
+  m += `👤 الاسم: ${g('f-name')||'—'}\n`;
+  m += `📞 الهاتف: ${g('f-phone')||'—'}\n`;
+  m += `🏷️ الماركة: ${g('f-brand')||'—'}\n`;
+  m += `📋 الموديل: ${g('f-model')||'—'}\n`;
+  m += `🔄 نوع الطلب: ${g('f-type')||'—'}\n`;
+  m += `💰 الميزانية: ${g('f-budget')||'—'} درهم\n`;
+  if(g('f-notes')) m += `📝 ملاحظات: ${g('f-notes')}\n`;
+  m += `\n_أرسل من موقع Youssef Phone_`;
+  window.open(`https://wa.me/212780304003?text=${encodeURIComponent(m)}`, '_blank');
+}
+
+// SCROLL ANIMATIONS
+const io = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting){ e.target.style.opacity='1'; e.target.style.transform='translateY(0)' } });
+}, {threshold:.08});
+document.querySelectorAll('.bc,.wc,.cc,.stat').forEach(el => {
+  el.style.cssText += 'opacity:0;transform:translateY(18px);transition:opacity .5s ease,transform .5s ease';
+  io.observe(el);
+});
+</script>
+</body>
+</html>
